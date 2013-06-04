@@ -65,23 +65,19 @@ Cube& App::getCube(unsigned cid) {
 }
 
 void App::onCubeConnect(unsigned cid) {
-  Cube& cube = cubes[cid];
-  cube.connect(cid);
+  cubes[cid].connect(cid);
 }
 
 void App::onCubeDisconnect(unsigned cid) {
-  Cube& cube = cubes[cid];
-  cube.disconnect();
+  cubes[cid].disconnect();
 }
 
 void App::onCubeRefresh(unsigned cid) {
-  Cube& cube = cubes[cid];
-  cube.refresh();
+  cubes[cid].refresh();
 }
 
 void App::onCubeTouch(unsigned cid) {
-  Cube& cube = cubes[cid];
-  cube.touch();
+  cubes[cid].touch();
 }
 
 }
