@@ -24,8 +24,6 @@
 
 #include <sifteo.h>
 
-// Sifteo::AssetLoader* loader, Sifteo::AssetConfiguration<1>& config
-
 namespace sappy {
 
 class Scene {
