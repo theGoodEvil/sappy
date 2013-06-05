@@ -36,6 +36,9 @@ App::App() {
   Events::cubeDisconnect.set(&App::onCubeDisconnect, this);
   Events::cubeRefresh.set(&App::onCubeRefresh, this);
   Events::cubeTouch.set(&App::onCubeTouch, this);
+
+  Events::neighborAdd.set(&App::onNeighborAdd, this);
+  Events::neighborRemove.set(&App::onNeighborRemove, this);
 }
 
 App* App::getInstance() {
@@ -78,6 +81,14 @@ void App::onCubeRefresh(unsigned cid) {
 
 void App::onCubeTouch(unsigned cid) {
   cubes[cid].touch();
+}
+
+void App::onNeighborAdd(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1) {
+  cubes[cube0].neighborAdd((Side)side0, cube1, (Side)side1);
+}
+
+void App::onNeighborRemove(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1) {
+  cubes[cube0].neighborRemove((Side)side0, cube1, (Side)side1);
 }
 
 }

@@ -35,6 +35,20 @@ class Scene {
     virtual void onPaint(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
     virtual void onIdle(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
     virtual void onTouch(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
+
+    virtual void onNeighborAdd(
+      Sifteo::Side side,
+      Sifteo::CubeID otherCube,
+      Sifteo::Side otherSide,
+      Sifteo::CubeID cid,
+      Sifteo::VideoBuffer& vbuf) {}
+
+    virtual void onNeighborRemove(
+      Sifteo::Side side,
+      Sifteo::CubeID otherCube,
+      Sifteo::Side otherSide,
+      Sifteo::CubeID cid,
+      Sifteo::VideoBuffer& vbuf) {}
 };
 
 }

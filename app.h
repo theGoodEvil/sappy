@@ -44,6 +44,9 @@ class App {
     void onCubeRefresh(unsigned cid);
     void onCubeTouch(unsigned cid);
 
+    void onNeighborAdd(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1);
+    void onNeighborRemove(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1);
+
     static App* instance;
 
     Cube cubes[CUBE_ALLOCATION];

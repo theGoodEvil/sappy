@@ -46,6 +46,8 @@ class Cube {
     void refresh();
 
     void touch();
+    void neighborAdd(Sifteo::Side side, Sifteo::CubeID otherCube, Sifteo::Side otherSide);
+    void neighborRemove(Sifteo::Side side, Sifteo::CubeID otherCube, Sifteo::Side otherSide);
 
     void update();
 

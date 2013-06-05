@@ -79,6 +79,15 @@ void Cube::touch() {
   scene->onTouch(id, vbuf);
 }
 
+void Cube::neighborAdd(Side side, CubeID otherCube, Side otherSide) {
+  scene->onNeighborAdd(side, otherCube, otherSide, id, vbuf);
+}
+
+void Cube::neighborRemove(Side side, CubeID otherCube, Side otherSide) {
+  scene->onNeighborRemove(side, otherCube, otherSide, id, vbuf);
+}
+
+
 void Cube::update() {
   if (id.isDefined()) {
     switch (nextAction) {
