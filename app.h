@@ -36,6 +36,9 @@ class App {
     void run();
     Cube& getCube(unsigned cid);
 
+  protected:
+    Cube cubes[CUBE_ALLOCATION];
+
   private:
     virtual void onLoop(const Sifteo::TimeDelta& delta) {}
 
@@ -49,7 +52,6 @@ class App {
 
     static App* instance;
 
-    Cube cubes[CUBE_ALLOCATION];
     Sifteo::TimeStep timeStep;
 };
 
