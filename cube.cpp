@@ -50,7 +50,7 @@ void Cube::setLoaderConfig(AssetLoader* loader, AssetConfiguration<1>* config) {
   this->nextAction = LOAD;
 }
 
-void Cube::connect(const CubeID& id) {
+void Cube::connect(CubeID id) {
   LOG("Cube::connect (cube %d)\n", (int)id);
 
   this->id = id;

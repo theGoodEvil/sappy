@@ -41,7 +41,7 @@ class Cube {
       Sifteo::AssetLoader* loader,
       Sifteo::AssetConfiguration<1>* config);
 
-    void connect(const Sifteo::CubeID& id);
+    void connect(Sifteo::CubeID id);
     void disconnect();
     void refresh();
 
