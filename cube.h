@@ -35,6 +35,8 @@ class Cube {
     Cube();
 
     Sifteo::CubeID getID();
+    Sifteo::VideoBuffer& getVideoBuffer();
+
     Scene* getScene();
     void setScene(Scene* scene);
 

@@ -36,6 +36,10 @@ CubeID Cube::getID() {
   return id;
 }
 
+VideoBuffer& Cube::getVideoBuffer() {
+  return vbuf;
+}
+
 Scene* Cube::getScene() {
   return scene;
 }
