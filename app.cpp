@@ -32,6 +32,8 @@ App::App() {
   ASSERT(instance == 0 && "You can only create one App instance");
   instance = this;
 
+  random.seed();
+
   Events::cubeConnect.set(&App::onCubeConnect, this);
   Events::cubeDisconnect.set(&App::onCubeDisconnect, this);
   Events::cubeRefresh.set(&App::onCubeRefresh, this);

@@ -37,6 +37,7 @@ class App {
     Cube& getCube(unsigned cid);
 
   protected:
+    Sifteo::Random random;
     Cube cubes[CUBE_ALLOCATION];
 
   private:
