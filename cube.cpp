@@ -80,11 +80,11 @@ void Cube::touch() {
 }
 
 void Cube::neighborAdd(Side side, CubeID otherCube, Side otherSide) {
-  scene->onNeighborAdd(side, otherCube, otherSide, id, vbuf);
+  scene->onNeighborAdd(id, side, otherCube, otherSide, vbuf);
 }
 
 void Cube::neighborRemove(Side side, CubeID otherCube, Side otherSide) {
-  scene->onNeighborRemove(side, otherCube, otherSide, id, vbuf);
+  scene->onNeighborRemove(id, side, otherCube, otherSide, vbuf);
 }
 
 
