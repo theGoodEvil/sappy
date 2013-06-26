@@ -81,7 +81,7 @@ void Cube::refresh() {
 }
 
 void Cube::touch() {
-  scene->onTouch(id, vbuf);
+  scene->onTouch(*this);
 }
 
 void Cube::neighborAdd(Side side, CubeID otherCubeID, Side otherSide) {
@@ -109,11 +109,11 @@ void Cube::update() {
         if (scene->load(loader, id, vbuf)) nextAction = PAINT;
         break;
       case PAINT:
-        scene->onPaint(id, vbuf);
+        scene->onPaint(*this);
         nextAction = IDLE;
         break;
       case IDLE:
-        scene->onIdle(id, vbuf);
+        scene->onIdle(*this);
         break;
     }
   }

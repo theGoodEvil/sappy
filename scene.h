@@ -34,9 +34,9 @@ class Scene {
 
     bool load(Sifteo::AssetLoader* loader, Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf);
 
-    virtual void onPaint(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
-    virtual void onIdle(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
-    virtual void onTouch(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
+    virtual void onPaint(Cube& cube) {}
+    virtual void onIdle(Cube& cube) {}
+    virtual void onTouch(Cube& cube) {}
 
     virtual bool onNeighborAdd(
       Cube& cube,
