@@ -26,6 +26,8 @@
 
 namespace sappy {
 
+class Cube;
+
 class Scene {
   private:
     friend class Cube;
@@ -36,19 +38,17 @@ class Scene {
     virtual void onIdle(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
     virtual void onTouch(Sifteo::CubeID cid, Sifteo::VideoBuffer& vbuf) {}  
 
-    virtual void onNeighborAdd(
-      Sifteo::CubeID cid,
+    virtual bool onNeighborAdd(
+      Cube& cube,
       Sifteo::Side side,
-      Sifteo::CubeID otherCube,
-      Sifteo::Side otherSide,
-      Sifteo::VideoBuffer& vbuf) {}
+      Cube& otherCube,
+      Sifteo::Side otherSide) { return true; }
 
-    virtual void onNeighborRemove(
-      Sifteo::CubeID cid,
+    virtual bool onNeighborRemove(
+      Cube& cube,
       Sifteo::Side side,
-      Sifteo::CubeID otherCube,
-      Sifteo::Side otherSide,
-      Sifteo::VideoBuffer& vbuf) {}
+      Cube& otherCube,
+      Sifteo::Side otherSide) { return true; }
 };
 
 }

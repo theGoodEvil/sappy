@@ -20,6 +20,7 @@
 // THE SOFTWARE.
 ////////////////////////////////////////////////////////////////////////////////
 
+#include "app.h"
 #include "cube.h"
 #include "scene.h"
 
@@ -29,6 +30,10 @@ namespace sappy {
 
 Cube::Cube()
 : nextAction(IDLE) {
+}
+
+CubeID Cube::getID() {
+  return id;
 }
 
 Scene* Cube::getScene() {
@@ -79,12 +84,21 @@ void Cube::touch() {
   scene->onTouch(id, vbuf);
 }
 
-void Cube::neighborAdd(Side side, CubeID otherCube, Side otherSide) {
-  scene->onNeighborAdd(id, side, otherCube, otherSide, vbuf);
+void Cube::neighborAdd(Side side, CubeID otherCubeID, Side otherSide) {
+  App* app = App::getInstance();
+  Cube& otherCube = app->getCube(otherCubeID);
+
+  if (scene->onNeighborAdd(*this, side, otherCube, otherSide)) {
+    Scene* otherScene = otherCube.getScene();
+    otherScene->onNeighborAdd(otherCube, otherSide, *this, side);
+  }
 }
 
-void Cube::neighborRemove(Side side, CubeID otherCube, Side otherSide) {
-  scene->onNeighborRemove(id, side, otherCube, otherSide, vbuf);
+void Cube::neighborRemove(Side side, CubeID otherCubeID, Side otherSide) {
+  App* app = App::getInstance();
+  Cube& otherCube = app->getCube(otherCubeID);
+
+  scene->onNeighborRemove(*this, side, otherCube, otherSide);
 }
 
 
