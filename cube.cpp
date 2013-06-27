@@ -40,10 +40,6 @@ VideoBuffer& Cube::getVideoBuffer() {
   return vbuf;
 }
 
-Scene* Cube::getScene() {
-  return scene;
-}
-
 void Cube::setScene(Scene* scene) {
   this->scene = scene;
 

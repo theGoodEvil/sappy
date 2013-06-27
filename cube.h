@@ -37,7 +37,7 @@ class Cube {
     Sifteo::CubeID getID();
     Sifteo::VideoBuffer& getVideoBuffer();
 
-    Scene* getScene();
+    template <typename SceneType = Scene> SceneType* getScene();
     void setScene(Scene* scene);
 
     void setLoaderConfig(
@@ -70,5 +70,10 @@ class Cube {
     Action nextAction;
     Scene* scene;
 };
+
+template <typename SceneType>
+SceneType* Cube::getScene() {
+  return static_cast<SceneType*>(scene);
+}
 
 }
