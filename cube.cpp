@@ -29,7 +29,8 @@ using namespace Sifteo;
 namespace sappy {
 
 Cube::Cube()
-: nextAction(IDLE) {
+: nextAction(IDLE)
+, scene(0) {
 }
 
 CubeID Cube::getID() {
@@ -81,29 +82,34 @@ void Cube::refresh() {
 }
 
 void Cube::touch() {
-  scene->onTouch(*this);
+  if (scene) {
+    scene->onTouch(*this);
+  }
 }
 
 void Cube::neighborAdd(Side side, CubeID otherCubeID, Side otherSide) {
-  App* app = App::getInstance();
-  Cube& otherCube = app->getCube(otherCubeID);
+  if (scene) {
+    App* app = App::getInstance();
+    Cube& otherCube = app->getCube(otherCubeID);
 
-  if (scene->onNeighborAdd(*this, side, otherCube, otherSide)) {
-    Scene* otherScene = otherCube.getScene();
-    otherScene->onNeighborAdd(otherCube, otherSide, *this, side);
+    if (scene->onNeighborAdd(*this, side, otherCube, otherSide)) {
+      Scene* otherScene = otherCube.getScene();
+      otherScene->onNeighborAdd(otherCube, otherSide, *this, side);
+    }
   }
 }
 
 void Cube::neighborRemove(Side side, CubeID otherCubeID, Side otherSide) {
-  App* app = App::getInstance();
-  Cube& otherCube = app->getCube(otherCubeID);
+  if (scene) {
+    App* app = App::getInstance();
+    Cube& otherCube = app->getCube(otherCubeID);
 
-  scene->onNeighborRemove(*this, side, otherCube, otherSide);
+    scene->onNeighborRemove(*this, side, otherCube, otherSide);
+  }
 }
 
-
 void Cube::update() {
-  if (id.isDefined()) {
+  if (scene && id.isDefined()) {
     switch (nextAction) {
       case LOAD:
         if (scene->load(loader, id, vbuf)) nextAction = PAINT;
