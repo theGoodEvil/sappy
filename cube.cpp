@@ -82,8 +82,12 @@ void Cube::refresh() {
 }
 
 void Cube::touch() {
-  if (scene) {
-    scene->onTouch(*this);
+  if (scene && id.isDefined()) {
+    if (id.isTouching()) {
+      scene->onTouchDown(*this);
+    } else {
+      scene->onTouchUp(*this);
+    }
   }
 }
 

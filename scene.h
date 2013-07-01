@@ -36,7 +36,8 @@ class Scene {
 
     virtual void onPaint(Cube& cube) {}
     virtual void onIdle(Cube& cube) {}
-    virtual void onTouch(Cube& cube) {}
+    virtual void onTouchDown(Cube& cube) {}
+    virtual void onTouchUp(Cube& cube) {}
 
     virtual bool onNeighborAdd(
       Cube& cube,
