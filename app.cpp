@@ -36,7 +36,6 @@ App::App() {
 
   Events::cubeConnect.set(&App::onCubeConnect, this);
   Events::cubeDisconnect.set(&App::onCubeDisconnect, this);
-  Events::cubeRefresh.set(&App::onCubeRefresh, this);
   Events::cubeTouch.set(&App::onCubeTouch, this);
 
   Events::neighborAdd.set(&App::onNeighborAdd, this);
@@ -75,10 +74,6 @@ void App::onCubeConnect(unsigned cid) {
 
 void App::onCubeDisconnect(unsigned cid) {
   cubes[cid].disconnect();
-}
-
-void App::onCubeRefresh(unsigned cid) {
-  cubes[cid].refresh();
 }
 
 void App::onCubeTouch(unsigned cid) {

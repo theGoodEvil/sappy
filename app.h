@@ -45,7 +45,6 @@ class App {
 
     void onCubeConnect(unsigned cid);
     void onCubeDisconnect(unsigned cid);
-    void onCubeRefresh(unsigned cid);
     void onCubeTouch(unsigned cid);
 
     void onNeighborAdd(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1);
