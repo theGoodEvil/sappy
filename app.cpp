@@ -81,11 +81,15 @@ void App::onCubeTouch(unsigned cid) {
 }
 
 void App::onNeighborAdd(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1) {
-  cubes[cube0].neighborAdd((Side)side0, cube1, (Side)side1);
+  if (Neighborhood(cube0).hasCubeAt((Side)side0)) {
+    cubes[cube0].neighborAdd((Side)side0, cube1, (Side)side1);
+  }
 }
 
 void App::onNeighborRemove(unsigned cube0, unsigned side0, unsigned cube1, unsigned side1) {
-  cubes[cube0].neighborRemove((Side)side0, cube1, (Side)side1);
+  if (Neighborhood(cube0).hasCubeAt((Side)side0)) {
+    cubes[cube0].neighborRemove((Side)side0, cube1, (Side)side1);
+  }
 }
 
 }
